@@ -37,7 +37,7 @@ export default class App extends Component {
   render() {
     const list = !this.state.selectedFilter || this.state.selectedFilter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
     return (
-      <FruitBasket fruits={list}/>
+      <FruitBasket handleFilterChange={this.handleFilterChange} filters={this.state.filters} fruits={list}/>
     );
   }
 }
