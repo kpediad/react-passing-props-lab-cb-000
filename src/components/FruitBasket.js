@@ -7,6 +7,6 @@ const FruitBasket = props =>
       <div className="fruit-basket">
         <Filter handleChange={this.props.handleFilterChange} />
         <FilteredFruitList fruits={this.props.fruits} filter={this.props.selectedFilter} />
-      </div>
+      </div>;
 
 export default FruitBasket;
