@@ -8,4 +8,9 @@ const Filter = props =>
         )}
       </select>;
 
+Filter.defaultProps = {
+  filters: [],
+  handleChange:,
+}
+
 export default Filter;
