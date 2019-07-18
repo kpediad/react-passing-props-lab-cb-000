@@ -8,8 +8,8 @@ export default class App extends Component {
 
     this.state = {
       filters: [],
-      items: [],
-      selectedFilter: null
+      fruit: [],
+      currentFilter: null
     };
   }
 
@@ -20,7 +20,7 @@ export default class App extends Component {
   componentDidMount() {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(items => this.setState({ items }));
+      .then(items => this.setState({ fruit }));
   }
 
   fetchFilters = () => {
@@ -31,11 +31,11 @@ export default class App extends Component {
 
   handleFilterChange = event => {
     console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
+    this.setState({ currentFilter: event.target.value });
   }
 
   render() {
-    const list = !this.state.selectedFilter || this.state.selectedFilter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
+    const list = !this.state.currentFilter || this.state.currentFilter === 'all' ? this.state.fruit : this.state.fruit.filter(i => i.fruit_type === this.state.currentFilter);
     return (
       <FruitBasket handleFilterChange={this.handleFilterChange} filters={this.state.filters} fruits={list}/>
     );
