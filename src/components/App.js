@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 
 import FruitBasket from './FruitBasket';
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
 
@@ -17,6 +17,12 @@ class App extends Component {
     this.fetchFilters();
   }
 
+  componentDidMount() {
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(items => this.setState({ items }));
+  }
+
   fetchFilters = () => {
     fetch('/api/fruit_types')
       .then(response => response.json())
@@ -29,13 +35,13 @@ class App extends Component {
   }
 
   render() {
+    const list = !this.state.selectedFilter || this.state.selectedFilter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
     return (
-      <FruitBasket />
+      <FruitBasket fruits={list}/>
     );
   }
 }
 
-export default FruitBasket;
 
 
 
