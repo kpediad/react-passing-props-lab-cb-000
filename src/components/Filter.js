@@ -11,6 +11,6 @@ const Filter = props =>
 Filter.defaultProps = {
   filters: [],
   handleChange:,
-}
+};
 
 export default Filter;
