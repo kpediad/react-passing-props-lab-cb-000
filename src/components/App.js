@@ -42,10 +42,3 @@ export default class App extends Component {
   }
 }
 
-
-
-
-
-// const App = () => <FruitBasket />;
-//
-// export default App;
